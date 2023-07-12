@@ -10941,6 +10941,7 @@ p {
   padding-top: 1rem;
   padding-bottom: 1rem;
   background-color: #FAFAFA;
+
 }
 #mainNav .navbar-toggler {
   padding: 0.75rem;
@@ -11380,3 +11381,11 @@ section#contact form#contactForm :-ms-input-placeholder {
 .white {
   color: #fff;
 }
+
+.remove{
+  display: none;
+}
+/* 
+#mainNav img, .nav-item{
+
+} */

@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', event => {
         } else {
             navbarCollapsible.classList.add('navbar-shrink')
         }
-
+        
     };
 
     // Shrink the navbar 
@@ -36,7 +36,11 @@ window.addEventListener('DOMContentLoaded', event => {
             target: '#mainNav',
             rootMargin: '0px 0px -40%',
         });
+
+
     };
+
+
 
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');
@@ -47,8 +51,54 @@ window.addEventListener('DOMContentLoaded', event => {
         responsiveNavItem.addEventListener('click', () => {
             if (window.getComputedStyle(navbarToggler).display !== 'none') {
                 navbarToggler.click();
+                
             }
+            
         });
     });
 
+      
+
+});
+
+// ---------------
+
+var image = document.getElementById('logo');
+var navItems = document.querySelectorAll('.nav-item');
+var isImageVisible = false;
+var areNavItemsVisible = false;
+
+document.addEventListener('scroll', function() {
+  var currentScrollPosition = window.scrollY;
+  var windowHeight = window.innerHeight;
+
+  if (currentScrollPosition > 0 && !isImageVisible) {
+    // Rolagem para baixo para exibir a imagem
+    var imagePosition = image.getBoundingClientRect().top;
+    if (imagePosition < windowHeight) {
+      image.classList.remove('remove');
+      isImageVisible = true;
+    }
+  } else if (currentScrollPosition === 0 && isImageVisible) {
+    // Rolagem para cima até o topo da página para ocultar a imagem
+    image.classList.add('remove');
+    isImageVisible = false;
+  }
+
+  if (currentScrollPosition > 0 && !areNavItemsVisible) {
+    // Rolagem para baixo para exibir a classe nav-item
+    navItems.forEach(function(navItem) {
+      var navItemPosition = navItem.getBoundingClientRect().top;
+      if (navItemPosition < windowHeight) {
+        navItem.classList.remove('remove');
+      }
+    });
+    areNavItemsVisible = true;
+  } else if (currentScrollPosition === 0 && areNavItemsVisible) {
+    // Rolagem para cima até o topo da página para ocultar a classe nav-item
+    navItems.forEach(function(navItem) {
+      navItem.classList.add('remove');
+    });
+    areNavItemsVisible = false;
+  }
 });
